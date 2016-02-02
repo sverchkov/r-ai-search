@@ -4,12 +4,12 @@
 \alias{branchBoundOnTree}
 \title{Branch and bound on a search tree}
 \usage{
-branchBoundOnTree(init.node, getScoreBounds, getChildren, isGoal)
+branchBoundOnTree(init.node, getCostBounds, getChildren, isGoal)
 }
 \arguments{
 \item{init.node}{Initial node of the search space}
 
-\item{getScoreBounds}{Function that returns the upper and lower bounds of the score
+\item{getCostBounds}{Function that returns the upper and lower bounds of the cost
 given a node}
 
 \item{getChildren}{Function that gets the children of the current node in the search
@@ -23,5 +23,9 @@ an optimal goal node
 \description{
 This function assumes that the search space is a tree, meaning that it does not
 check whether it is revisiting a node.
+}
+\details{
+We use the typical convention of the score representing a cost, meaning that lower
+scores are better, and the optimum is a minimum.
 }
 
