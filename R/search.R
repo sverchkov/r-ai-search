@@ -15,12 +15,13 @@
 #' tree
 #' @param isGoal Function that determines whether a node is a goal node
 #' @return an optimal goal node
+#' @export
 branchBoundOnTree = function( init.node, getCostBounds, getChildren, isGoal ){
 
   # Node queue
   queue = list()
   # Cost queue
-  costs = vector( mode = numeric )
+  costs = vector( mode = "numeric" )
   # Upper bound: anything with a lowerbound above this gets thrown out
   highest.cost = Inf
 
@@ -35,7 +36,7 @@ branchBoundOnTree = function( init.node, getCostBounds, getChildren, isGoal ){
       bounds = getCostBounds( child )
 
       # Bound check for pruning
-      if ( bounds["lower"] >= highest.cost ){
+      if ( bounds["lower"] <= highest.cost ){
 
         # Update the highest.cost
         if ( bounds["upper"] < highest.cost )
@@ -48,8 +49,8 @@ branchBoundOnTree = function( init.node, getCostBounds, getChildren, isGoal ){
     }
 
     # Pop next node from queue
-    optima = which( costs = min( costs ) )
-    index = optima[ length[ optima ] ]
+    optima = which( costs == min( costs ) )
+    index = optima[ length( optima ) ]
     current.node = queue[[ index ]]
     costs = costs[ -index ]
     queue = queue[ -index ]
