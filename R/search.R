@@ -59,3 +59,32 @@ branchBoundOnTree = function( init.node, getCostBounds, getChildren, isGoal ){
   # Return
   current.node
 }
+
+#' Greedy search
+#'
+#' Finds the minimum score greedily
+#' @param init.node the start node for the search
+#' @param getChildren function listing the child nodes of the current node
+#' @param getScore function that gives the score of the current node
+#' @return the greedily minimal node
+#' @export
+searchGreedily = function ( init.node, getChildren, getScore ){
+
+  next.node = init.node
+  score = Inf
+
+  while ( !is.null( next.node ) ){
+    node = next.node
+    next.node = NULL
+
+    for ( child in getChildren( node ) ){
+      child.score = getScore( child )
+      if ( child.score < score ){
+        score = child.score
+        next.node = child
+      }
+    }
+  }
+
+  next.node
+}
