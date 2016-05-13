@@ -51,6 +51,7 @@ branchBoundOnTree = function( init.node, getCostBounds, getChildren, isGoal ){
     # Pop next node from queue
     optima = which( costs == min( costs ) )
     index = optima[ length( optima ) ]
+    if ( length( index ) < 1 ) break
     current.node = queue[[ index ]]
     costs = costs[ -index ]
     queue = queue[ -index ]

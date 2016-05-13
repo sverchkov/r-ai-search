@@ -4,14 +4,14 @@
 \alias{searchGreedily}
 \title{Greedy search}
 \usage{
-searchGreedily(init.node, getChildren, getScore)
+searchGreedily(next.node, getChildren, getScore)
 }
 \arguments{
-\item{init.node}{the start node for the search}
-
 \item{getChildren}{function listing the child nodes of the current node}
 
 \item{getScore}{function that gives the score of the current node}
+
+\item{init.node}{the start node for the search}
 }
 \value{
 the greedily minimal node
